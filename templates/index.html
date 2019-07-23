@@ -1,0 +1,324 @@
+
+
+ <!DOCTYPE html>
+ <html class="no-js"> 
+   <head>
+   <meta charset="utf-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <title>Book Store</title>
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <meta name="description" content="Free HTML5 Template by FREEHTML5.CO" />
+     <meta name="keywords" content="free html5, free template, free bootstrap, html5, css3, mobile first, responsive" />
+     <meta name="author" content="FREEHTML5.CO" />
+ 
+     <!-- Facebook and Twitter integration -->
+   <meta property="og:title" content=""/>
+   <meta property="og:image" content=""/>
+   <meta property="og:url" content=""/>
+   <meta property="og:site_name" content=""/>
+   <meta property="og:description" content=""/>
+   <meta name="twitter:title" content="" />
+   <meta name="twitter:image" content="" />
+   <meta name="twitter:url" content="" />
+   <meta name="twitter:card" content="" />
+ 
+   <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+   <link rel="shortcut icon" href="favicon.ico">
+ 
+   <!-- Google Webfont -->
+   <link href='https://fonts.googleapis.com/css?family=PT+Mono' rel='stylesheet' type='text/css'>
+   <!-- Themify Icons -->
+   <link rel="stylesheet" href="{{ url_for('static', filename='css/themify-icons.css') }}">
+   <!-- Icomoon Icons -->
+   <link rel="stylesheet" href="{{ url_for('static', filename='css/icomoon-icons.css') }}">
+   <!-- Bootstrap -->
+   <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.css') }}">
+   <!-- Owl Carousel -->
+   <link rel="stylesheet" href="{{ url_for('static', filename='css/owl.carousel.min.css') }}">
+   <link rel="stylesheet" href="{{ url_for('static', filename='css/owl.theme.default.min.css') }}">
+   <!-- Magnific Popup -->
+   <link rel="stylesheet" href="{{ url_for('static', filename='css/magnific-popup.css') }}">
+   <!-- Easy Responsive Tabs -->
+   <link rel="stylesheet" href="{{ url_for('static', filename='css/easy-responsive-tabs.css') }}">
+   <!-- Theme Style -->
+   <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+ 
+   
+   <!-- FOR IE9 below -->
+   <!--[if lte IE 9]>
+   <script src="js/modernizr-2.6.2.min.js"></script>
+   <script src="js/respond.min.js"></script>
+   <![endif]-->
+ 
+   </head>
+   <body>
+     
+     <!-- Header -->
+     
+ 
+     <main role="main">
+       <!-- Start Intro -->
+       <div id="fh5co-intro">
+         <div class="container">
+           <h2>Book &amp; Store</21>
+            
+             
+         </div>
+       </div>
+       <!-- End Intro -->
+       
+       
+ 
+         <!-- Tabs -->
+         <div class="container">
+           <div class="row">
+             <div class="col-md-12">
+                 <!-- <h2 class="fh5co-uppercase-heading-sm text-center">Fully Responsive Tabs</h2> -->
+                 
+                 <div class="fh5co-spacer fh5co-spacer-xs"></div>
+                 
+                 <!-- Center Tabs -->
+                 <div id="fh5co-tab-feature-center" class="fh5co-tab text-center">
+                   <ul class="resp-tabs-list hor_1">
+                     <li><i class="fh5co-tab-menu-icon ti-ruler-pencil"></i>Author</li>
+                     <li><i class="fh5co-tab-menu-icon ti-paint-bucket"></i> Book</li>
+                     <li><i class="fh5co-tab-menu-icon ti-shopping-cart"></i> Customers</li>
+                     <li><i class="fh5co-tab-menu-icon ti-shopping-cart"></i> Reservation</li>
+                   </ul>
+                   <div class="resp-tabs-container hor_1">
+                     <div>
+                       <div class="row">
+                         <div class="col-md-8">
+                           <h2 class="h3">Authors Listing</h2>
+                           
+                         </div>
+                         <div class="col-md-4">
+                          <a href="/add_authors" class="btn btn-primary btn-sm">Add Authors</a>
+                        </div>
+                         <div class="col-md-12">
+                          <table>
+                            <thead>
+                              <tr>
+                                <th>SlNo &nbsp;</th>
+                                <th>Author FNAME &nbsp;</th>
+                                <th>Author LNAME &nbsp;</th>
+                                <th>Action </th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                                {% for user in userDetails %}
+                              <tr>
+                                <td>{{user[0]}}</td>
+                                <td>{{user[1]}}</td>
+                                <td>{{user[2]}}</td>
+                                <td><a href="/author_edit/{{user[0]}}">Edit</a></td>
+                                <td><a href="/author_delete/{{user[0]}}">Delete</a></td>
+
+                              </tr>
+                              {% endfor %}
+                            </tbody>
+                          </table>
+                         </div>
+                         
+                       </div>
+                     </div>
+                     <div>
+                       <div class="row">
+                         <div class="col-md-8">
+                           <h2 class="h3">BooK  &amp; Detail</h2>
+                           
+                         </div>
+                         <div class="col-md-4">
+                            <a href="/add_book" class="btn btn-primary btn-sm">Add Books</a>
+                            <!-- <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names.." title="Type in a name"> -->
+
+                         </div>
+                         <div class="col-md-12">
+                          <table>
+                            <thead>
+                                
+                              <tr>
+                                <th>Sl No</th>
+                                <th>Book Title</th>
+                                <th>Author NAME</th>
+                                <th>Book Publisher</th>
+                                <th>Book P Date</th>
+                                <th>Book Subject</th>
+                                
+                                <th>Book Price</th>
+                                <th>Book Quantity</th>
+                                <th>Action</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                                {% for book in userBook %}
+                              <tr id="myUL">
+                                <td>{{book[0]}}</td>
+                                <td><a>{{book[1]}}</a></td>
+                                {% for user in userDetails %}
+                                {% if user[0] == book[2] %}
+                                <td>{{user[1]}}</td>
+                                {% endif %}
+                                {% endfor %}
+                                
+                                <td>{{book[3]}}</td>
+                                <td>{{book[4]}}</td>
+                                <td>{{book[5]}}</td>
+                                <td>{{book[6]}}</td>
+                                <td>{{book[7]}}</td>
+                                <td><a href="/book_edit/{{book[0]}}">Edit</a></td>
+                                <td><a href="/book_delete/{{book[0]}}">Delete</a></td>
+
+                              </tr>
+                              {% endfor %}
+                            </tbody>
+                          </table>
+                         </div>
+                       </div>
+                     </div>
+                     <div>
+                       <div class="row">
+                          <div class="col-md-8">
+                              <h2 class="h3">Customers</h2>
+                              
+                            </div>
+                            <!-- <div class="col-md-4">
+                               <a href="/add_book" class="btn btn-primary btn-sm">Add Books</a>
+                            </div> -->
+                            <div class="col-md-12">
+                             <table>
+                               <thead>
+                                   
+                                 <tr>
+                                   <th>Sl No &nbsp;</th>
+                                   <th>Customer Name&nbsp;</th>
+                                   <th>Customer Address&nbsp;</th>
+                                   
+                                 </tr>
+                               </thead>
+                               <tbody>
+                                   {% for cust in userCustomer %}
+                                 <tr>
+                                   <td>{{cust[0]}}</td>
+                                   <td>{{cust[1]}}</td>
+                                   <td>{{cust[2]}}</td>
+                                 </tr>
+                                 {% endfor %}
+                               </tbody>
+                             </table>
+                            </div>
+                          </div>
+                        </div>
+                     
+
+                     <div>
+                      <div class="row">
+                          <div class="col-md-8">
+                              <h2 class="h3">Reservations</h2>
+                              
+                            </div>
+                            
+                            <div class="col-md-12">
+                             <table>
+                               <thead>
+                                   
+                                 <tr>
+                                   <th>Sl No &nbsp;</th>
+                                   <th>Customer Name &nbsp;</th>
+                                   <th>Book Title &nbsp;</th>
+                                   
+                                   <th>Book Quantity &nbsp;</th>
+                                 </tr>
+                               </thead>
+                               <tbody>
+                                   {% for res in userReservation %}
+                                 <tr>
+                                   <td>{{res[0]}}</td>
+                                   <td>{{res[2]}}</td>
+                                  
+                                   
+                                   <td>{{res[4]}}</td>
+                                   <td>{{res[5]}}</td>
+
+                                   </tr>
+                                 {% endfor %}
+                               </tbody>
+                             </table>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                   </div>
+                 </div>
+                 <!-- Center Tabs -->
+               </div>
+ 
+               <hr class="fh5co-spacer fh5co-spacer-sm">
+ 
+               
+                
+ 
+               
+           </div>
+         </div>
+         <!-- Tabs -->
+         <!-- Form -->
+ 
+ 
+    
+ 
+     </main>
+ 
+     
+     <!-- Go To Top -->
+     <a href="#" class="fh5co-gotop"><i class="ti-shift-left"></i></a>
+     
+       
+     <!-- jQuery -->
+     <script src="{{ url_for('static', filename='js/jquery-1.10.2.min.js') }}"></script>
+     <!-- jQuery Easing -->
+     <script src="{{ url_for('static', filename='js/jquery.easing.1.3.js') }}"></script>
+     <!-- Bootstrap -->
+     <script src="{{ url_for('static', filename='js/js/bootstrap.js') }}"></script>
+     <!-- Owl carousel -->
+     <script src="{{ url_for('static', filename='js/owl.carousel.min.js') }}"></script>
+     <!-- Magnific Popup -->
+     <script src="{{ url_for('static', filename='js/jquery.magnific-popup.min.js') }}"></script>
+     <!-- Easy Responsive Tabs -->
+     <script src="{{ url_for('static', filename='js/easyResponsiveTabs.js') }}"></script>
+     <!-- FastClick for Mobile/Tablets -->
+     <script src="{{ url_for('static', filename='js/owl.carousel.min.js') }}"></script>
+     <!-- Velocity -->
+     <script src="{{ url_for('static', filename='js/velocity.min.js') }}"></script>
+     
+     <!-- Google Map -->
+     
+     <script src="{{ url_for('static', filename='js/google_map.js') }}"></script>
+ 
+ 
+     <!-- Main JS -->
+     <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+ 
+   </body>
+ </html>
+
+ <script>
+    function myFunction() {
+      console.log('test');
+        var input, filter, ul, li, a, i, txtValue;
+        input = document.getElementById("myInput");
+        filter = input.value.toUpperCase();
+        ul = document.getElementById("myUL");
+        li = ul.getElementsByTagName("td");
+        for (i = 0; i < li.length; i++) {
+            a = li[i].getElementsByTagName("a")[0];
+            txtValue = a.textContent || a.innerText;
+            if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                li[i].style.display = "";
+            } else {
+                li[i].style.display = "none";
+            }
+        }
+    }
+    </script>
